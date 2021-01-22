@@ -6,13 +6,13 @@ import ShopPage from './page/shopPage/shopPage.component.jsx'
 import Header from './components/header-component/header.component';
 
 
-const HatsPage = () => (
-  <div>
-    <h1>
-      HATS
-    </h1>
-  </div>
-);
+// const HatsPage = () => (
+//   <div>
+//     <h1>
+//       HATS
+//     </h1>
+//   </div>
+// );
 
 
 function App() {
