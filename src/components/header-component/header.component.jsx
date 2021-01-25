@@ -6,8 +6,10 @@ import {ReactComponent as Logo} from '../../assets/4.2 crown.svg';
 
 import './header.component.styles.scss';
 
+import { auth } from '../../components/firebase/firebase.utils'; 
 
-const Header = () => (
+
+const Header = ({currentUser}) => (
   <div className='header'>
     <Link to= '/' className='logo-container'>
       <Logo className='logo' />
@@ -19,6 +21,12 @@ const Header = () => (
       <Link to='/contact' className='option'>
         CONTACT
       </Link>
+      {
+        currentUser?
+         <div className='option' onClick={() => auth.signOut()}>SIGN OUT</div>
+         :
+          <Link className='option' to='/signin'>SIGN IN</Link>
+      }
     </div>
   </div>
 );
