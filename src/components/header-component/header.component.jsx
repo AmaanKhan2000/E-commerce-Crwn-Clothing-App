@@ -3,10 +3,10 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 import {ReactComponent as Logo} from '../../assets/4.2 crown.svg';
+import { auth } from '../firebase/firebase.utils';
 
 import './header.component.styles.scss';
 
-import { auth } from '../../components/firebase/firebase.utils'; 
 
 
 const Header = ({currentUser}) => (
@@ -22,9 +22,9 @@ const Header = ({currentUser}) => (
         CONTACT
       </Link>
       {
-        currentUser?
-         <div className='option' onClick={() => auth.signOut()}>SIGN OUT</div>
-         :
+        currentUser ?
+          <div className='option' onClick={() => auth.signOut()}>SIGN OUT</div>
+        :
           <Link className='option' to='/signin'>SIGN IN</Link>
       }
     </div>

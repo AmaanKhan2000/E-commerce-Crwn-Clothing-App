@@ -5,7 +5,8 @@ import HomePage from './page/homepage/homepage-components'
 import ShopPage from './page/shopPage/shopPage.component.jsx'
 import Header from './components/header-component/header.component';
 import SignInPage from './page/signin-signup-page/signin-sign-up.component';
-import { auth } from './components/firebase/firebase.utils.js';
+import { auth, createUserProfileDocument } from './components/firebase/firebase.utils';
+
 
 
 class App extends React.Component {
@@ -14,33 +15,30 @@ class App extends React.Component {
     super();
 
     this.state = {
-
-      currentUser: null
+      currentUser:null
     }
   }
 
-  unsubscribeFromAuth = null;
+  unsubscribeFromAuth = null; 
 
-  componentDidMount(){
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
-      this.setState({currentUser: user})
-
-      console.log(user)
+  componentDidMount() {
+   this.unsubscribeFromAuth =  auth.onAuthStateChanged(async (user) => {
+      createUserProfileDocument(user);
     })
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this.unsubscribeFromAuth()
-  }
+  };
 
   render() {
     return (
       <div>
         <Header currentUser={this.state.currentUser}/>
        <Switch>
-        <Route exact path='/' component={HomePage}/>
-        <Route path='/shop' component={ShopPage}/>
-        <Route path='/signin' component={SignInPage}/>
+        <Route exact path='/' component={HomePage} />
+        <Route path='/shop' component={ShopPage} />
+        <Route path='/signin' component={SignInPage} />
        </Switch>
       </div>
     );
