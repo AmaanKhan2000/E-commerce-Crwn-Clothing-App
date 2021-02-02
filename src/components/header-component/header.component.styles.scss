@@ -21,6 +21,13 @@
     .option {
       padding: 10px 15px;
       cursor: pointer;
+
+      &:hover {
+        background-color: #C0C0C0;
+        padding: 10px 15px;
+        border-radius: 5px;
+      }
     }
+
   }
 }
