@@ -9,6 +9,7 @@ import { auth } from '../firebase/firebase.utils';
 
 import './header.component.styles.scss';
 import CartIcon from '../cart-icon/cart-icon.component';
+import CartDropdown from '../cart-dropdown/cart-dropdown';
 
 
 
@@ -32,6 +33,7 @@ const Header = ({currentUser}) => (
       }
       <CartIcon />
     </div>
+    <CartDropdown />
   </div>
 );
 
